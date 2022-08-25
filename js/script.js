@@ -28,3 +28,26 @@ for (var i = 0; i < criticalities.length; i++) {
     criticalities[i].style.backgroundColor = '#e74c3c';
   };
 };
+
+// 👉 Mettre en place une mécanique permettant, au chargement, d’afficher uniquement les tâches de priorité 3 & 4.
+
+
+
+var container = document.getElementById("container");
+var div = document.createElement("div");
+var newText = document.createTextNode(
+  "Seules les tâches ayant un niveau de criticité supérieur à 2 sont affichées."
+);
+div.appendChild(newText);
+div.style.color = "white";
+div.style.fontSize = "16px";
+div.style.textAlign = "center";
+
+
+for (var i = 0; i < criticalities.length; i++) {
+  if (criticalities[i].textContent < 3) {
+    criticalities[i].parentNode.style.display = 'none'; // ne pas afficher le parent donc la classe row
+    container.prepend(div);
+    // container.appendChild(div);
+  };
+};
